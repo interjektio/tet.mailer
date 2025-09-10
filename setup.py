@@ -12,6 +12,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = """
     pyramid_mailer
+    pyramid_di
 """.split()
 
 setup(name='tet.mailer',

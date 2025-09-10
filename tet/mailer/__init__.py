@@ -6,7 +6,7 @@ from pyramid.config import Configurator
 from pyramid_mailer import mailer_factory_from_settings
 from pyramid_mailer.mailer import DebugMailer
 from pyramid_mailer.message import Message
-from tet.services import RequestScopedBaseService
+from pyramid_di import RequestScopedBaseService
 
 _log = logging.getLogger(__name__)
 
@@ -68,7 +68,7 @@ class MailerService(RequestScopedBaseService, IMailerService):
 
 
 def includeme(config: Configurator) -> None:
-    config.include('tet.services')
+    config.include('pyramid_services')
     settings = config.registry.settings
     prefix = settings.get('tet.mailer.prefix', 'tet.mailer.')
     mailer = mailer_factory_from_settings(settings, prefix=prefix)
